@@ -1,37 +1,30 @@
 {
-  "name": "root",
+  "name": "react-vite-app",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "lint": "npm-run-all lint:*",
-    "lint:packages": "npm run lint --workspace=packages --if-present",
-    "lint:root": "eslint tests",
-    "build": "npm run build --workspace=packages --if-present",
-    "pretest": "npm run build",
-    "serve": "http-server -c-1 -s -p 3000 .",
-    "test": "server-test test:browser:server 3000 test:all",
-    "test:all": "npm-run-all test:browser:*:*",
-    "test:browser": "mocha-headless-chrome -a enable-features=SharedArrayBuffer",
-    "test:browser:core:mt": "npm run test:browser -- -f http://localhost:3000/tests/ffmpeg-core-mt.test.html",
-    "test:browser:core:st": "npm run test:browser -- -f http://localhost:3000/tests/ffmpeg-core-st.test.html",
-    "test:browser:ffmpeg:mt": "npm run test:browser -- -f http://localhost:3000/tests/ffmpeg-mt.test.html",
-    "test:browser:ffmpeg:st": "npm run test:browser -- -f http://localhost:3000/tests/ffmpeg-st.test.html",
-    "test:browser:server": "npm run serve",
-    "test:node": "mocha --exit --bail -t 60000",
-    "test:node:core:mt": "npm run test:node -- --require tests/test-helper-mt.js tests/ffmpeg-core.test.js",
-    "test:node:core:st": "npm run test:node -- --require tests/test-helper-st.js tests/ffmpeg-core.test.js",
-    "prepublishOnly": "npm run build",
-    "postinstall": "npm run build"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
+  "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.10",
+    "@ffmpeg/util": "^0.12.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
-    "chai": "^4.3.7",
-    "http-server": "^14.1.1",
-    "mocha": "^10.2.0",
-    "mocha-headless-chrome": "^4.0.0",
-    "npm-run-all": "^4.1.5",
-    "start-server-and-test": "^2.0.3"
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.5.2"
   }
 }

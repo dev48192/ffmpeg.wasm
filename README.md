@@ -1,34 +1,27 @@
-<p align="center">
-  <a href="#">
-    <img alt="ffmpeg.wasm" width="128px" height="128px" src="https://github.com/ffmpegwasm/ffmpeg.wasm/blob/main/apps/website/static/img/logo192.png"></img>
-  </a>
-</p>
+# React + TypeScript + Vite
 
-# ffmpeg.wasm
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-ffmpeg.wasm is a pure Webassembly / Javascript port of FFmpeg. It enables video & audio record, convert and stream right inside browsers.
+Currently, two official plugins are available:
 
-[![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
-[![Node Version](https://img.shields.io/node/v/@ffmpeg/ffmpeg.svg)](https://img.shields.io/node/v/@ffmpeg/ffmpeg.svg)
-[![Actions Status](https://github.com/ffmpegwasm/ffmpeg.wasm/workflows/CI/badge.svg)](https://github.com/ffmpegwasm/ffmpeg.wasm/actions)
-![npm (tag)](https://img.shields.io/npm/v/@ffmpeg/ffmpeg/latest)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ffmpegwasm/ffmpeg.wasm/graphs/commit-activity)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Downloads Total](https://img.shields.io/npm/dt/@ffmpeg/ffmpeg.svg)](https://www.npmjs.com/package/@ffmpeg/ffmpeg)
-[![Downloads Month](https://img.shields.io/npm/dm/@ffmpeg/ffmpeg.svg)](https://www.npmjs.com/package/@ffmpeg/ffmpeg)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1943b6d3-45ad-4b46-bfba-cb8d5716604c/deploy-status)](https://app.netlify.com/sites/ffmpegwasm/deploys)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Join us on Discord!
+## Expanding the ESLint configuration
 
-[![Discord](https://dcbadge.vercel.app/api/server/NjGMaqqfm5)](https://discord.gg/NjGMaqqfm5)
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-## Documentation
+- Configure the top-level `parserOptions` property like this:
 
-- [Introduction](https://ffmpegwasm.netlify.app/docs/overview)
-- [Getting
-    Started](https://ffmpegwasm.netlify.app/docs/getting-started/installation)
-- [API](https://ffmpegwasm.netlify.app/docs/api/ffmpeg/)
-- [FAQ](https://ffmpegwasm.netlify.app/docs/faq)
-- [Contribution](https://ffmpegwasm.netlify.app/docs/contribution/core)
+```js
+   parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+   },
+```
 
-Please sponsor ffmpeg.wasm to make it sustainable. :heart:
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
